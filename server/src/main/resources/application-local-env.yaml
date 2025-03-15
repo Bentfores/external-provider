@@ -1,0 +1,87 @@
+---
+server:
+  port: 8083
+  cors:
+    allowed-origin-patterns:
+      - '*'
+    allowed-methods:
+      - GET
+      - POST
+      - PATCH
+      - PUT
+    allowed-headers:
+      - Authorization
+      - Content-Type
+      - X-Requested-With
+      - Platform
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/bentfores-external-provider
+    username: bentfores-external-provider
+    password: bentfores-external-provider
+
+  liquibase:
+    enabled: true
+    user: bentfores-external-provider
+    password: bentfores-external-provider
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+
+  kafka:
+    bootstrap-servers: localhost:9092, localhost:9093
+    consumer:
+      properties:
+        schema.registry.url: http://localhost:8081
+    producer:
+      properties:
+        schema.registry.url: http://localhost:8081
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8444/realms/local
+          jwk-set-uri: http://localhost:8444/realms/local/protocol/openid-connect/certs
+
+system:
+  kafka:
+    producer:
+      schema-registry-url: http://localhost:8081
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    useRootPath: true
+    url: /openapi/bentfores-external-provider-1.0.0.yaml
+  api-docs:
+    enabled: false
+
+api:
+  external:
+    external-url: localhost:8082
+
+oauth2:
+  provider-url: http://localhost:8444
+  token-path: /realms/local/protocol/openid-connect/token
+  client-id: swagger
+  client-secret: 1234
+
+feature-toggle:
+  bot-start-event-enabled: true
+  bot-creation-notification-enabled: true
+  bot-creation-validation-enabled: false
+  bot-creation-error-notification-enabled: false
+  open-order-executed-notification-enabled: true
+  close-order-executed-notification-enabled: true
+
+jobs:
+  inactive-bots-refresher:
+    enabled: false
+
+management:
+  tracing:
+    enabled: false
