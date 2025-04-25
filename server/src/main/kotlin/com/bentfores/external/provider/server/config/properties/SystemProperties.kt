@@ -1,4 +1,4 @@
-package com.bentfores.external.provider.server.props
+package com.bentfores.external.provider.server.config.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration

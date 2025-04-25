@@ -1,7 +1,7 @@
 --liquibase formatted sql
 
---changeset yuliezai
-create table quarter
+--changeset yuliezai:1
+create table if not exists quarter
 (
     id         uuid      not null
         constraint pk_quarter primary key,

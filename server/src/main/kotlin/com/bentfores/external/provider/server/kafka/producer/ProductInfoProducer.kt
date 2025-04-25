@@ -1,7 +1,7 @@
 package com.bentfores.external.provider.server.kafka.producer
 
 import com.bentfores.external.provider.ProductInfo.ProductsInfo
-import com.bentfores.external.provider.server.props.SystemProperties
+import com.bentfores.external.provider.server.config.properties.SystemProperties
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.springframework.kafka.core.KafkaTemplate

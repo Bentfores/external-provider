@@ -1,6 +1,6 @@
 ---
 server:
-  port: 8083
+  port: 8084
   cors:
     allowed-origin-patterns:
       - '*'
@@ -17,7 +17,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5434/bentfores-external-provider
+    url: jdbc:postgresql://localhost:5440/bentfores-external-provider
     username: bentfores-external-provider
     password: bentfores-external-provider
 
@@ -69,18 +69,6 @@ oauth2:
   token-path: /realms/local/protocol/openid-connect/token
   client-id: swagger
   client-secret: 1234
-
-feature-toggle:
-  bot-start-event-enabled: true
-  bot-creation-notification-enabled: true
-  bot-creation-validation-enabled: false
-  bot-creation-error-notification-enabled: false
-  open-order-executed-notification-enabled: true
-  close-order-executed-notification-enabled: true
-
-jobs:
-  inactive-bots-refresher:
-    enabled: false
 
 management:
   tracing:

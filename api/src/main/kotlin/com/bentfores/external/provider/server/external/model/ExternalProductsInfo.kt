@@ -1,4 +1,4 @@
-package com.bentfores.analysis.service.server.external.model
+package com.bentfores.external.provider.server.external.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.math.BigDecimal

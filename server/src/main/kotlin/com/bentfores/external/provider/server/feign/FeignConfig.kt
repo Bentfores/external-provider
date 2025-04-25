@@ -1,6 +1,6 @@
 package com.bentfores.external.provider.server.feign
 
-import com.bentfores.analysis.service.server.external.ExternalApi
+import com.bentfores.external.provider.server.external.ExternalApi
 import feign.Capability
 import feign.micrometer.MicrometerCapability
 import feign.okhttp.OkHttpClient

@@ -1,21 +1,22 @@
 package com.bentfores.external.provider.server.job
 
-import com.bentfores.analysis.service.server.external.ExternalApi
-import com.bentfores.external.provider.server.config.properties.JobProperties
+import com.bentfores.external.provider.server.data.repository.DynamicConfigsRepository
 import com.bentfores.external.provider.server.data.repository.QuarterRepository
+import com.bentfores.external.provider.server.external.ExternalApi
 import com.bentfores.external.provider.server.kafka.producer.ProductInfoProducer
+import com.bentfores.external.provider.server.mapper.v1.ProductMapper
 import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.transaction.Transactional
-import java.time.LocalDateTime
-import com.bentfores.external.provider.server.mapper.v1.ProductMapper
 import org.quartz.Job
 import org.quartz.JobExecutionContext
+import java.time.LocalDateTime
 
 open class ProductInfoGetterJob(
   private val externalApi: ExternalApi,
   private val quarterRepository: QuarterRepository,
   private val productInfoProducer: ProductInfoProducer,
-  private val productMapper: ProductMapper
+  private val productMapper: ProductMapper,
+  private val dynamicConfigsRepository: DynamicConfigsRepository
 ) : Job {
 
   @Transactional
@@ -27,7 +28,7 @@ open class ProductInfoGetterJob(
 
       log.info { "Product processing has started by date: $timeNow" }
 
-      val products = externalApi.getProductsInfo()
+      val products = externalApi.getProductsInfo(dynamicConfigsRepository.findTopByOrderById().productNumber)
 
       productInfoProducer.send(productMapper.mapToProductsInfo(products))
 

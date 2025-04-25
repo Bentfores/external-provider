@@ -1,7 +1,7 @@
 package com.bentfores.external.provider.server.kafka.config
 
 import com.bentfores.external.provider.ProductInfo.ProductsInfo
-import com.bentfores.external.provider.server.props.SystemProperties
+import com.bentfores.external.provider.server.config.properties.SystemProperties
 import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties

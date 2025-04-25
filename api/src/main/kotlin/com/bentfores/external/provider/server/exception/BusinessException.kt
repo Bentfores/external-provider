@@ -1,4 +1,4 @@
-package com.adron.bot.manager.api.exception
+package com.bentfores.external.provider.server.exception
 
 class BusinessException(
     private var errorCode: ErrorCode,

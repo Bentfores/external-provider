@@ -1,3 +1,3 @@
-package com.adron.bot.manager.api.exception
+package com.bentfores.external.provider.server.exception
 
 class InternalValidationException(errorMessage: String) : RuntimeException(errorMessage)

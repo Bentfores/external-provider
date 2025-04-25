@@ -16,7 +16,7 @@ tasks {
     modelPackage = "com.bentfores.external.provider.api.model"
     inputSpec = "$rootDir/docs/swagger/bentfores-external-provider-1.0.0.yaml"
     globalProperties = [
-        apis  : "Bots,Orders",
+        apis  : "External",
         models: ""
     ]
     additionalProperties = [
